@@ -19,8 +19,7 @@ console.log(result);
 
 const connectionStringUrl = new URL(connectionString);
 neonConfig.useSecureWebSocket = connectionStringUrl.hostname !== 'db.localtest.me';
-neonConfig.wsProxy =
-  connectionStringUrl.hostname === 'db.localtest.me' ? (host) => `${host}:4444/v1` : undefined;
+neonConfig.wsProxy = connectionStringUrl.hostname === 'db.localtest.me' ? (host) => `${host}:4444/v2` : `${host}/v2`;
 neonConfig.webSocketConstructor = ws; // when using Node.js
 
 const pool = new Pool({ connectionString });
